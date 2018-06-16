@@ -1,0 +1,13 @@
+.product-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.card {
+  overflow: hidden;
+
+  &:hover {
+    box-shadow: 0 0 4px rgba(50, 50, 50, 0.3);
+  }
+}

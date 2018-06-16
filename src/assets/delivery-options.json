@@ -1,0 +1,20 @@
+[
+  {
+    "id": "1",
+    "name": "Express",
+    "description": "The quickest delivery service.",
+    "price": 9.99
+  },
+  {
+    "id": "2",
+    "name": "Standard",
+    "description": "Standard deliver up to 2 hours.",
+    "price": 5.99
+  },
+  {
+    "id": "3",
+    "name": "Pick-up",
+    "description": "Pick it up from you local restaurant.",
+    "price": 0
+  }
+]
