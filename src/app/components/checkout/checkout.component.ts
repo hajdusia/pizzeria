@@ -9,38 +9,87 @@ import { ShoppingCartService } from "app/services/shopping-cart.service";
 import { Observable } from "rxjs/Observable";
 import { Subscription } from "rxjs/Subscription";
 
+/**
+ * Cart interface
+ */
 interface ICartItemWithProduct extends CartItem {
+  /**
+   * Product
+   */
   product: Product;
+  /**
+   * Total cost
+   */
   totalCost: number;
 }
 
+/**
+ * Checkout component
+ */
 @Component({
   selector: "app-checkout",
   styleUrls: ["./checkout.component.scss"],
   templateUrl: "./checkout.component.html"
 })
-export class CheckoutComponent implements OnInit, OnDestroy {
-  public deliveryOptions: Observable<DeliveryOption[]>;
-  public cart: Observable<ShoppingCart>;
-  public cartItems: ICartItemWithProduct[];
-  public itemCount: number;
 
+/**
+ * Checkout class
+ */
+export class CheckoutComponent implements OnInit, OnDestroy {
+  /**
+   * Delivery options
+   */
+  public deliveryOptions: Observable<DeliveryOption[]>;
+  /**
+   * Cart
+   */
+  public cart: Observable<ShoppingCart>;
+  /**
+   * Cart items
+   */
+  public cartItems: ICartItemWithProduct[];
+  /**
+   * Item count
+   */
+  public itemCount: number;
+  /**
+   * Product list
+   */
   private products: Product[];
+  /**
+   * Cart subscription
+   */
   private cartSubscription: Subscription;
 
+  /**
+   * Constructor
+   * @param {ProductsDataService} productsService
+   * @param {DeliveryOptionsDataService} deliveryOptionService
+   * @param {ShoppingCartService} shoppingCartService
+   */
   public constructor(private productsService: ProductsDataService,
                      private deliveryOptionService: DeliveryOptionsDataService,
                      private shoppingCartService: ShoppingCartService) {
   }
 
+  /**
+   * Clears cart
+   */
   public emptyCart(): void {
     this.shoppingCartService.empty();
   }
 
+  /**
+   * Sets delivery options
+   * @param {DeliveryOption} option
+   */
   public setDeliveryOption(option: DeliveryOption): void {
     this.shoppingCartService.setDeliveryOption(option);
   }
 
+  /**
+   * Initializes start up values
+   */
   public ngOnInit(): void {
     this.deliveryOptions = this.deliveryOptionService.all();
     this.cart = this.shoppingCartService.get();
@@ -60,6 +109,9 @@ export class CheckoutComponent implements OnInit, OnDestroy {
     });
   }
 
+  /**
+   * Destroys subscription
+   */
   public ngOnDestroy(): void {
     if (this.cartSubscription) {
       this.cartSubscription.unsubscribe();

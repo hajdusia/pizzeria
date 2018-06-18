@@ -6,26 +6,55 @@ import { ShoppingCartService } from "app/services/shopping-cart.service";
 import { Observable } from "rxjs/Observable";
 import { Subscription } from "rxjs/Subscription";
 
+/**
+ * Shopping cart component
+ */
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: "app-shopping-cart",
   templateUrl: "./shopping-cart.component.html"
 })
-export class ShoppingCartComponent implements OnInit, OnDestroy {
-  public products: Observable<Product[]>;
-  public cart: Observable<ShoppingCart>;
-  public itemCount: number;
 
+/**
+ * Shopping cart class
+ */
+export class ShoppingCartComponent implements OnInit, OnDestroy {
+  /**
+   * Products
+   */
+  public products: Observable<Product[]>;
+  /**
+   * Card
+   */
+  public cart: Observable<ShoppingCart>;
+  /**
+   * Item count
+   */
+  public itemCount: number;
+  /**
+   * Cart subscription
+   */
   private cartSubscription: Subscription;
 
+  /**
+   * Constructor
+   * @param {ProductsDataService} productsService
+   * @param {ShoppingCartService} shoppingCartService
+   */
   public constructor(private productsService: ProductsDataService,
                      private shoppingCartService: ShoppingCartService) {
   }
 
+  /**
+   * Cleans cart
+   */
   public emptyCart(): void {
     this.shoppingCartService.empty();
   }
 
+  /**
+   * Initializes set up values
+   */
   public ngOnInit(): void {
     this.products = this.productsService.all();
     this.cart = this.shoppingCartService.get();
@@ -34,6 +63,9 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
     });
   }
 
+  /**
+   * Destroys component
+   */
   public ngOnDestroy(): void {
     if (this.cartSubscription) {
       this.cartSubscription.unsubscribe();
