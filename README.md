@@ -3,7 +3,7 @@ An example online store using Angular 4.
       
 # Setup
            
-Install the npm dependencies
+Install the npm dependencies.
            
  ```bash
 npm install
@@ -16,8 +16,6 @@ npm install
  ```
  
  # Generate documentation
- 
- Execute in application folder. Run by opening index.html file in documentation folder.
  
  
   ```bash
