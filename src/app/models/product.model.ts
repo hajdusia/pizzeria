@@ -1,5 +1,8 @@
 import { Ingredient } from "app/models/ingredient.model";
 
+/**
+ * Product model
+ */
 export class Product {
   /**
    * Id

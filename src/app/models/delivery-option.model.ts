@@ -1,3 +1,6 @@
+/**
+ * Delivery option model
+ */
 export class DeliveryOption {
   /**
    * Id
