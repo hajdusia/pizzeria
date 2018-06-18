@@ -9,7 +9,6 @@ import { CheckoutComponent } from "./components/checkout/checkout.component";
 import { OrderConfirmationComponent } from "./components/order-confirmation/order-confirmation.component";
 import { ShoppingCartComponent } from "./components/shopping-cart/shopping-cart.component";
 import { StoreFrontComponent } from "./components/store-front/store-front.component";
-import { PopulatedCartRouteGuard } from "./route-gaurds/populated-cart.route-gaurd";
 import { DeliveryOptionsDataService } from "./services/delivery-options.service";
 import { ProductsDataService } from "./services/products.service";
 import { ShoppingCartService } from "./services/shopping-cart.service";
@@ -33,7 +32,6 @@ import { LocalStorageService, StorageService } from "./services/storage.service"
   providers: [
     ProductsDataService,
     DeliveryOptionsDataService,
-    PopulatedCartRouteGuard,
     LocalStorageService,
     { provide: StorageService, useClass: LocalStorageService },
     {
